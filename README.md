@@ -23,11 +23,8 @@ This project is an email automation tool that integrates with Google and COHERE 
 ## Installation
 
 ### 1. Clone the Repository
-git clone https://github.com/ManiKrishnaa/Email_automation_tool/tree/main
+git clone https://github.com/ManiKrishnaa/Email_automation_tool.git
 cd your-repository 
 
 ## run command
 node index.js
-```bash
-git clone https://github.com/ManiKrishnaa/Email_automation_tool/tree/main
-cd your-repository
