@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emails</title>
+    <style>
+                /* Style for the body of the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style for the header */
+        h1 {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            margin: 0;
+        }
+
+        /* Style for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style for table header */
+        th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        /* Style for table data cells */
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        /* Style for table rows */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Style for links */
+        a {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Unread Emails</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>From</th>
+                <th>Subject</th>
+                <th>Body</th>
+                <th>Classification</th>
+                <th>Reply Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% gmailEmailDetails.forEach(email => { %>
+                <tr>
+                    <td><%= email.from %></td>
+                    <td><%= email.subject %></td>
+                    <td><%= email.body %></td>
+                    <td><%= email.classification %></td>
+                    <td><%= email.replyContent %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <a href="/">Back to Home</a>
+</body>
+</html>
