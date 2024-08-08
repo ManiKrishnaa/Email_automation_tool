@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Center content vertically */
+            min-height: 100vh; /* Full viewport height */
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            border-bottom: 5px solid #77b300;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Ensure the header is above other content */
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            margin-top: 100px; /* Space for the fixed header */
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #77b300;
+            color: #fff;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            border: 2px solid #77b300;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #fff;
+            color: #77b300;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Email Automation Tool</h1>
+    </header>
+    <div class="container">
+        <a href="/auth/google" class="btn">Authenticate with Google</a>
+    </div>
+</body>
+</html>
