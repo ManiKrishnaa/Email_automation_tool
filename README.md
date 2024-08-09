@@ -1,7 +1,7 @@
 # Email Automation Tool
 
 ## Overview
-Note : Open AI is not supporting so i used cohere ai for responses.
+Note : Open AI is not supporting for responses so i used cohere ai for responses.
 
 This project is an email automation tool that integrates with Google and COHERE APIs to classify and respond to emails. It includes authentication with Google, email classification using COHERE AI model, and a web interface for managing email interactions.
 
