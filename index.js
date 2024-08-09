@@ -1,4 +1,4 @@
-// index.js
+
 const express = require('express');
 const { google } = require('googleapis');
 const axios = require('axios');
@@ -116,7 +116,7 @@ async function classifyEmail(emailContent) {
             'https://api.cohere.ai/v1/generate',
             {
                 model: 'command-light',
-                prompt: `Classify the following email content into one of the following categories: Interested, Not Interested, or Requires More Information.\nEmail content: ${emailContent} . Just give me only the category. Nothing above it!`,
+                prompt: `Classify the following email content into one of the following categories: Interested, Not Interested, or Requires More Information.\nEmail content: ${emailContent} . Just give me response only category like interested or not interested ir requires more information!`,
                 max_tokens: 10,
                 temperature: 0.5
             },
@@ -129,14 +129,26 @@ async function classifyEmail(emailContent) {
         );
 
         const classification = response.data.generations[0].text.trim().toLowerCase();
-        
-        // Normalize and validate classification
-        if (['interested', 'not interested', 'requires more information'].includes(classification)) {
-            return classification.charAt(0).toUpperCase() + classification.slice(1);
+        const cleanedClassification = classification.replace(/^response:\s*/, '');
+
+        console.log("Cleaned classification:", cleanedClassification);
+
+        if (cleanedClassification.includes("interested")) {
+            console.log("The classification indicates interest.");
+            return 'Interested';
+        } else if (cleanedClassification.includes("not interested") || cleanedClassification.includes("disinterested")) {
+            console.log("The classification indicates no interest.");
+            return 'Not Interested';
+        } else if (cleanedClassification.includes("requires more information") || cleanedClassification.includes("more info") || cleanedClassification.includes("need more information")) {
+            console.log("The classification indicates the need for more information.");
+            return 'Requires More Information';
         } else {
-            console.warn(`Unexpected classification: ${classification}. Defaulting to 'Requires More Information'.`);
+            console.log("The classification does not match any known categories.");
             return 'Requires More Information';
         }
+
+
+        
     } catch (error) {
         console.error('Error classifying email:', error.response ? error.response.data : error.message);
         if (error.response && error.response.status === 429) {
@@ -158,7 +170,7 @@ async function generateReply(classification) {
         case 'not interested':
             return `Thank you for your response. If you change your mind or have any questions in the future, feel free to reach out.`;
         case 'requires more information':
-            return `Thank you for reaching out. Could you please provide more details about what you need more information on? We're here to help.`;
+            return `Thank you for reaching out. Could you please provide more details ?`;
     }
 }
 
